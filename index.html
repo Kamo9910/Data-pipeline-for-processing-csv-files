@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Data pipeline for processing csv files</title>
+</head>
+<body>
+        <div class="centered-text">
+
+        <h1>Data Pipeline for Processing CSV Files Using S3, Lambda, Glue, and QuickSight</h1>
+        
+        <img class="myImage" src="Picture no1.png" alt="Data pipeline for processing csv files" style="transition: transform 0.3s ease;" height="50%" width="50%">
+        
+        <h2>Project Overview:</h2>
+        <div >
+        <p class="left ">To design and implement a serverless data pipeline that ingests CSV files, transforms them into a clean format, and makes them available for visualization in Amazon QuickSight (Quick Suite)—all with minimal manual intervention.CSV files uploaded to Amazon S3 csv-input-bucket5 trigger a Lambda function, which launches a Glue job to clean and transform the data before saving it back to Amazon S3 csv-output9-bucket5. A manifest file then connects the processed data to Amazon QuickSight, where it can be visualized in a piechart. The result is a fully automated, scalable workflow that demonstrates cloud engineering, automation, and data visualization skills.</p>
+        <h3 class="left ">Architecture workflow:</h3>
+        <ol>
+            <li class="left "><h4>Amazon S3(csv-input-bucket5)</h4></li>
+            <img class="myImage" src="Picture no2.png" alt="Data pipeline for processing csv files" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <ul class="left ">
+                <li>Stores raw CSV files uploaded by the user</li>
+                <li>Acts as the entry point for the pipeline</li>
+                <li>Amazon S3 is a reginal serverless storage </li>
+            </ul>
+            <li class="left "><h4>Creating IAM Roles</h4></li>
+            <ul >
+                <img class="myImage" src="Picture no4.png" alt="Lambda Role" style="transition: transform 0.3s ease;" height="50%" width="50%">
+                <li class="left ">Lambda Role
+                    <ul>
+                        <li>This role allows my lambda function to call <b>Start Job Run</b> on AWS Glue</li>
+                        <li>Without this role, Lambda can't trigger the ETL process when a new CSV is uploaded </li>
+                        <li>Lastly IAM roles are <b>Global</b></li>
+                    </ul>
+                </li>
+                <br>
+                <img class="myImage" src="Picture no5.png" alt="Glue Role" style="transition: transform 0.3s ease;" height="50%" width="50%">
+                
+                 <li class="left">Glue Role
+                 <ul>
+                    <li>Allows Glue to raed input data from Amazon S3 input bucket</li>
+                    <li>Grants permission to write output data to Aamazon S3 output bucket</li>
+                    <li>Without it Glue can't read ,transform or write data</li>
+                </ul>
+                    </li>
+
+            </ul>
+            <br>
+            <li class="left" >AWS Lambda</li>
+            <br>
+            <img class="myImage" src="Picture no6.png" alt="AWS Lambda " style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <br>
+            <img class="myImage" src="Picture no7.png" alt="AWS Lambda" style="transition: transform 0.3s ease;" height="50%" width="50%">
+           <br>
+            <ul class="left">
+                <li>Triggered automatically when a new CSV file is uploade insied the Amazon S3 input bucket </li>
+                <li>Starts the Glue job Without a manual execation</li>
+            </ul>
+            <br>
+            <li class="left" >AWs Glue </li>
+            <br>
+            <img class="myImage" src="Picture no8.png" alt="AWS Glue" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <img class="myImage" src="Picture no9.png" alt="AWS Glue" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <img class="myImage" src="Picture no10.png" alt="Amazon S3 bucket" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <ul class="left" >
+                <li>Reads the raw CSV from S3.</li>
+                <li>Cleans and transforms the data</li>
+                <li>Writes the processed data back into an output S3 buckt in a CSV Format</li>
+            </ul>
+            <li class="left">Amazon S3 output bucket</li>
+            <br>
+            <img class="myImage" src="Picture no3.png" alt="Amazon S3 output bucket" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <ul class="left" >
+                <li >Stores the transformed/cleaned data </li>
+                <li>Organized into folders for an easy access and scalability</li>
+            </ul>
+            <br>
+            <li class="left">Manifest file </li>
+            <img class="myImage" src="Picture no14.png" alt="Manifest file" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <ul class="left">
+                <li>A json file that tells QuickSight where to find the processed data in Amazon S3</li>
+            </ul>
+            <br>
+            <li class="left">Amazon QuickSight (Quick Suite)</li>
+            <br>
+            <img class="myImage" src="Picture no11.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <img class="myImage" src="Picture no12.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <img class="myImage" src="Picture no13.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <img class="myImage" src="Picture no15.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <img class="myImage" src="Picture no16.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <img class="myImage" src="Picture no17.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
+            <br>
+            <ul class="left">
+                <li>Connects to the output Amazon S3 bucket via the manifest file </li>
+                <li>loads the cleaned dataset</li>
+                <li>Provides interactive dashboards,charts and reposrts</li>
+            </ul>
+        </ol>
+        <br>
+        <h3 class="left" >Key Features </h3>
+        <ul class="left">
+            <li>Automation: Every new CSV upload triggers the pipeline automatically.</li>
+        <li>Scalability: Can handle multiple files and scale with AWS services.</li>
+        <li>Flexibility: Output can be JSON, CSV, or Parquet depending on needs.</li>
+        <li>Visualization: QuickSight dashboards make insights accessible and shareable.</li>
+        <li>Security: IAM roles and S3 access points ensure least-privilege access.</li>
+        </ul>
+
+        </div>
+
+        <script src="javascript.js" charset="utf-8" ></script>
+
+
+        </div>
+</body>
+</html>
