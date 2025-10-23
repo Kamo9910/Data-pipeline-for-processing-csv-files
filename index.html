@@ -15,63 +15,58 @@
         
         <h2>Project Overview:</h2>
         <div >
-        <p class="left ">To design and implement a serverless data pipeline that ingests CSV files, transforms them into a clean format, and makes them available for visualization in Amazon QuickSight (Quick Suite)—all with minimal manual intervention.CSV files uploaded to Amazon S3 csv-input-bucket5 trigger a Lambda function, which launches a Glue job to clean and transform the data before saving it back to Amazon S3 csv-output9-bucket5. A manifest file then connects the processed data to Amazon QuickSight, where it can be visualized in a piechart. The result is a fully automated, scalable workflow that demonstrates cloud engineering, automation, and data visualization skills.</p>
-        <h3 class="left ">Architecture workflow:</h3>
-        <ol>
-            <li class="left "><h4>Amazon S3(csv-input-bucket5)</h4></li>
+        <p >To design and implement a serverless data pipeline that ingests CSV files, transforms them into a clean format, and makes<br>
+            them available for visualization in Amazon QuickSight (Quick Suite)—all with minimal manual intervention.CSV files uploaded<br>
+            to Amazon S3 csv-input-bucket5 trigger a Lambda function, which launches a Glue job to clean and transform the data before<br> 
+            saving it back to Amazon S3 csv-output9-bucket5. A manifest file then connects the processed data to Amazon QuickSight, where<br>
+            it can be visualized in a piechart. The result is a fully automated, scalable workflow that demonstrates cloud engineering,<br> 
+            automation, and data visualization skills.</p>
+        <h3>Architecture workflow:</h3>
+            <h4>1. Amazon S3(csv-input-bucket5)</h4>
             <img class="myImage" src="Picture no2.png" alt="Data pipeline for processing csv files" style="transition: transform 0.3s ease;" height="50%" width="50%">
-            <ul class="left ">
-                <li>Stores raw CSV files uploaded by the user</li>
-                <li>Acts as the entry point for the pipeline</li>
-                <li>Amazon S3 is a reginal serverless storage </li>
-            </ul>
-            <li class="left "><h4>Creating IAM Roles</h4></li>
-            <ul >
+                <br>
+                <p>- Stores raw CSV files uploaded by the user<br>
+                - Acts as the entry point for the pipeline<br>
+                - Amazon S3 is a reginal serverless storage </p>
+            <br>
+            <h4>2. Creating IAM Roles</h4>
+            <br>
                 <img class="myImage" src="Picture no4.png" alt="Lambda Role" style="transition: transform 0.3s ease;" height="50%" width="50%">
-                <li class="left ">Lambda Role
-                    <ul>
-                        <li>This role allows my lambda function to call <b>Start Job Run</b> on AWS Glue</li>
-                        <li>Without this role, Lambda can't trigger the ETL process when a new CSV is uploaded </li>
-                        <li>Lastly IAM roles are <b>Global</b></li>
-                    </ul>
-                </li>
+                  <br>
+                <p>Lambda Role:<br>
+                        - This role allows my lambda function to call Start Job Run on AWS Glue<br>
+                        - Without this role, Lambda can't trigger the ETL process when a new CSV is uploaded <br>
+                        - Lastly IAM roles are Global</p>
                 <br>
                 <img class="myImage" src="Picture no5.png" alt="Glue Role" style="transition: transform 0.3s ease;" height="50%" width="50%">
                 
-                 <li class="left">Glue Role
-                 <ul>
-                    <li>Allows Glue to raed input data from Amazon S3 input bucket</li>
-                    <li>Grants permission to write output data to Aamazon S3 output bucket</li>
-                    <li>Without it Glue can't read ,transform or write data</li>
-                </ul>
-                    </li>
-
-            </ul>
+                 <p>Glue Role:<br>
+                    - Allows Glue to raed input data from Amazon S3 input bucket<br>
+                    - Grants permission to write output data to Aamazon S3 output bucket<br>
+                    -Without it Glue can't read ,transform or write data</p>
             <br>
-            <li class="left" >AWS Lambda</li>
+            <h4>3. AWS Lambda</h4>
             <br>
             <img class="myImage" src="Picture no6.png" alt="AWS Lambda " style="transition: transform 0.3s ease;" height="50%" width="50%">
             <br>
             <br>
             <img class="myImage" src="Picture no7.png" alt="AWS Lambda" style="transition: transform 0.3s ease;" height="50%" width="50%">
            <br>
-            <ul class="left">
-                <li>Triggered automatically when a new CSV file is uploade insied the Amazon S3 input bucket </li>
-                <li>Starts the Glue job Without a manual execation</li>
-            </ul>
+                <p>- Triggered automatically when a new CSV file is uploade insied the Amazon S3 input bucket <br>
+                - Starts the Glue job Without a manual execation</p>
             <br>
-            <li class="left" >AWs Glue </li>
+            <h4>4. AWs Glue </h4>
             <br>
             <img class="myImage" src="Picture no8.png" alt="AWS Glue" style="transition: transform 0.3s ease;" height="50%" width="50%">
             <br>
             <img class="myImage" src="Picture no9.png" alt="AWS Glue" style="transition: transform 0.3s ease;" height="50%" width="50%">
             <br>
             <img class="myImage" src="Picture no10.png" alt="Amazon S3 bucket" style="transition: transform 0.3s ease;" height="50%" width="50%">
-            <ul class="left" >
-                <li>Reads the raw CSV from S3.</li>
-                <li>Cleans and transforms the data</li>
-                <li>Writes the processed data back into an output S3 buckt in a CSV Format</li>
-            </ul>
+            <br>
+                <p>- Reads the raw CSV from S3.<br>
+                - Cleans and transforms the data<br>
+                - Writes the processed data back into an output S3 buckt in a CSV Format</p>
+            <br>
             <li class="left">Amazon S3 output bucket</li>
             <br>
             <img class="myImage" src="Picture no3.png" alt="Amazon S3 output bucket" style="transition: transform 0.3s ease;" height="50%" width="50%">
@@ -126,3 +121,4 @@
 </body>
 
 </html>
+
