@@ -15,11 +15,11 @@
         
         <h2>Project Overview:</h2>
         <div >
-        <p >To design and implement a serverless data pipeline that ingests CSV files, transforms them into a clean format, and makes<br>
-            them available for visualization in Amazon QuickSight (Quick Suite)—all with minimal manual intervention.CSV files uploaded<br>
-            to Amazon S3 csv-input-bucket5 trigger a Lambda function, which launches a Glue job to clean and transform the data before<br> 
-            saving it back to Amazon S3 csv-output9-bucket5. A manifest file then connects the processed data to Amazon QuickSight, where<br>
-            it can be visualized in a piechart. The result is a fully automated, scalable workflow that demonstrates cloud engineering,<br> 
+        <p >To design and implement a serverless data pipeline that ingests CSV files, transforms them into a clean format, and makes
+            them available for visualization in Amazon QuickSight (Quick Suite)—all with minimal manual intervention.CSV files uploaded
+            to Amazon S3 csv-input-bucket5 trigger a Lambda function, which launches a Glue job to clean and transform the data before
+            saving it back to Amazon S3 csv-output9-bucket5. A manifest file then connects the processed data to Amazon QuickSight, where
+            it can be visualized in a piechart. The result is a fully automated, scalable workflow that demonstrates cloud engineering,
             automation, and data visualization skills.</p>
         <h3>Architecture workflow:</h3>
             <h4>1. Amazon S3(csv-input-bucket5)</h4>
@@ -67,22 +67,19 @@
                 - Cleans and transforms the data<br>
                 - Writes the processed data back into an output S3 buckt in a CSV Format</p>
             <br>
-            <li class="left">Amazon S3 output bucket</li>
+            <h4>5. Amazon S3 output bucket</h4>
             <br>
             <img class="myImage" src="Picture no3.png" alt="Amazon S3 output bucket" style="transition: transform 0.3s ease;" height="50%" width="50%">
-            <ul class="left" >
-                <li >Stores the transformed/cleaned data </li>
-                <li>Organized into folders for an easy access and scalability</li>
-            </ul>
             <br>
-            <li class="left">Manifest file </li>
+                <p>- Stores the transformed/cleaned data<br>
+                - Organized into folders for an easy access and scalability</p>
+            <br>
+            <h4>6. Manifest file </h4>
             <img class="myImage" src="Picture no14.png" alt="Manifest file" style="transition: transform 0.3s ease;" height="50%" width="50%">
             <br>
-            <ul class="left">
-                <li>A json file that tells QuickSight where to find the processed data in Amazon S3</li>
-            </ul>
+                <p>- A json file that tells QuickSight where to find the processed data in Amazon S3</p>
             <br>
-            <li class="left">Amazon QuickSight (Quick Suite)</li>
+            <h4>7. Amazon QuickSight (Quick Suite)</h4>
             <br>
             <img class="myImage" src="Picture no11.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
             <br>
@@ -96,11 +93,9 @@
             <br>
             <img class="myImage" src="Picture no17.png" alt="Amazon QuickSight (Quick Suite)" style="transition: transform 0.3s ease;" height="50%" width="50%">
             <br>
-            <ul class="left">
-                <li>Connects to the output Amazon S3 bucket via the manifest file </li>
-                <li>loads the cleaned dataset</li>
-                <li>Provides interactive dashboards,charts and reports</li>
-            </ul>
+                <p>- Connects to the output Amazon S3 bucket via the manifest file <br>
+                - loads the cleaned dataset<br>
+                - Provides interactive dashboards,charts and reports</p>
         </ol>
         <br>
         <h3 class="left" >Key Features </h3>
@@ -121,4 +116,5 @@
 </body>
 
 </html>
+
 
